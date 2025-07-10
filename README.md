@@ -1,0 +1,2 @@
+# file-sharing-app
+A secure, scalable file-sharing application built with AWS and Terraform. This project enables authenticated users to upload files via pre-signed URLs to a KMS-encrypted S3 bucket, with robust access control using AWS Cognito and fine-grained IAM policies. The infrastructure is fully managed as code with Terraform, and the project includes a DevSecOps pipeline using GitHub Actions to enforce code quality and security standards.
