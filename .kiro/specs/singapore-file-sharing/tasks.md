@@ -1,36 +1,43 @@
 # Implementation Plan
 
-- [ ] 1. Set up Terraform infrastructure foundation
-  - Create Terraform modules for DynamoDB tables, S3 buckets, and IAM roles
-  - Define variables and outputs for all AWS resources
-  - Implement provider configuration with Singapore region settings
-  - _Requirements: 6.1, 6.2, 6.3, 6.4_
+- [x] 1. Set up React frontend with authentication
+  - React app with TypeScript and Tailwind CSS configured
+  - AWS Cognito authentication service implemented
+  - Login, signup, and confirmation forms created
+  - Basic file upload and list components implemented
+  - _Requirements: 1.1, 1.2, 1.4, 7.1_
 
-- [ ] 2. Implement core data models and utilities
-  - [ ] 2.1 Create TypeScript interfaces for all data models
-    - Write File, FileShare, AuditLog, and User interfaces
-    - Implement validation schemas using Joi or Zod
-    - Create utility functions for data transformation
-    - _Requirements: 2.3, 4.1, 9.1_
-
-  - [ ] 2.2 Build DynamoDB utility layer
-    - Create DynamoDB client wrapper with error handling
-    - Implement CRUD operations for each table
-    - Write query and scan utilities with pagination
-    - _Requirements: 2.3, 4.1, 4.2_
-
-- [ ] 3. Create AWS Cognito authentication infrastructure
-  - [ ] 3.1 Set up Cognito User Pool with Terraform
+- [ ] 2. Set up Terraform infrastructure foundation
+  - [ ] 2.1 Create Cognito User Pool module
     - Configure user pool with email verification
     - Set up user pool client with appropriate settings
     - Create identity pool for temporary AWS credentials
     - _Requirements: 1.1, 1.2, 1.3_
 
-  - [ ] 3.2 Implement authentication Lambda functions
-    - Write auth-handler Lambda for token validation
-    - Create profile-handler for user profile management
-    - Implement token-refresh Lambda function
-    - _Requirements: 1.2, 1.4, 1.5_
+  - [ ] 2.2 Create S3 bucket module
+    - Set up S3 bucket with versioning and encryption
+    - Configure bucket policies for Singapore compliance
+    - Set up CORS for frontend access
+    - _Requirements: 2.2, 6.1, 9.2_
+
+  - [ ] 2.3 Create DynamoDB tables module
+    - Create Users, Files, FileShares, and AuditLogs tables
+    - Configure indexes and streams for audit logging
+    - Set up encryption at rest with KMS
+    - _Requirements: 2.3, 4.1, 4.2_
+
+  - [ ] 2.4 Create KMS encryption module
+    - Set up customer-managed KMS keys
+    - Configure key rotation policies
+    - Create IAM policies for key access
+    - _Requirements: 9.2, 9.3, 9.5_
+
+- [ ] 3. Create backend Lambda functions structure
+  - [ ] 3.1 Set up Lambda function project structure
+    - Create Node.js project with TypeScript
+    - Set up shared utilities and data models
+    - Configure build and deployment scripts
+    - _Requirements: 2.3, 4.1, 9.1_
 
 - [ ] 4. Build file management Lambda functions
   - [ ] 4.1 Create file upload Lambda function
