@@ -1,6 +1,18 @@
-# Singapore-Compliant File Sharing Application
+# Secure File Sharing - A Security Learning Project
 
-A secure, serverless file sharing application built with AWS cloud-native services, designed to meet Singapore's regulatory requirements including PDPA compliance. The application features comprehensive audit trails, automated compliance monitoring, and enterprise-grade security while leveraging AWS free tier services for cost optimization.
+A personal project to explore and practice cloud security concepts through building a serverless file sharing application. This project serves as a hands-on learning experience for implementing security best practices, AWS services, and compliance considerations in a real-world scenario.
+
+## 🎯 Project Motivation
+
+As a fresh graduate looking to deepen my understanding of cloud security, I wanted to build something that would challenge me to implement:
+- **Authentication & Authorization** patterns in the cloud
+- **Data encryption** both in transit and at rest
+- **Secure file handling** with proper access controls
+- **Audit logging** for security monitoring
+- **Infrastructure as Code** for reproducible deployments
+- **Basic compliance considerations** (learning about Singapore's PDPA requirements)
+
+This isn't production-ready software - it's a learning sandbox where I can experiment with security concepts and AWS services while building something functional.
 
 ## 🏗️ Architecture
 
@@ -14,82 +26,86 @@ A secure, serverless file sharing application built with AWS cloud-native servic
 - **Compliance**: AWS Config rules with automated remediation
 - **Infrastructure**: 100% Terraform-managed infrastructure as code
 
-## 🔐 Security Features
+## 🎓 Learning Goals & Development Methodology
 
-- **End-to-End Encryption**: TLS 1.3 in transit, AES-256 at rest with AWS KMS
-- **Zero-Trust Architecture**: JWT-based authentication with fine-grained IAM policies
-- **Secure File Sharing**: Time-limited presigned URLs with access controls
-- **Comprehensive Audit Trail**: Every action logged with CloudTrail integration
-- **Web Application Firewall**: AWS WAF protection against common attacks
-- **Security Headers**: CSP, HSTS, and other security headers via CloudFront
+### My Development Approach
+1. **Spec-Driven Development**: Using Kiro AI to generate detailed requirements and design documents
+2. **Console-First Implementation**: Building and testing features manually in AWS Console before automating
+3. **Infrastructure as Code**: Writing Terraform to codify and automate the manual configurations
+4. **Iterative Security Hardening**: Starting with basic functionality, then layering in security controls
 
-## 🇸🇬 Singapore Compliance
+### Security Concepts I'm Exploring
+- **Authentication & Authorization**: AWS Cognito integration with JWT tokens
+- **Data Encryption**: Learning KMS for encryption at rest and TLS for transit
+- **Access Controls**: Implementing least-privilege IAM policies and presigned URLs
+- **Audit Logging**: Building comprehensive logging for security monitoring
+- **Secure File Handling**: Understanding secure upload/download patterns
 
-- **PDPA Compliance**: Personal Data Protection Act requirements
-- **Data Residency**: Singapore region deployment (ap-southeast-1)
-- **Audit Requirements**: Comprehensive logging and monitoring
-- **Right to Access**: User data export functionality
-- **Right to Deletion**: Secure data deletion with audit trails
-- **Automated Compliance**: AWS Config rules for continuous monitoring
+### Compliance Learning (Singapore Focus)
+- **PDPA Basics**: Understanding Personal Data Protection Act requirements
+- **Data Residency**: Keeping data within Singapore region (ap-southeast-1)
+- **Audit Trails**: Learning what needs to be logged for compliance
+- **User Rights**: Implementing basic data access and deletion capabilities
 
-## ✨ Key Features
+*Note: This is a learning project - the compliance implementation is educational and not production-ready.*
 
-### File Management
-- Drag-and-drop file uploads with progress tracking
-- Secure file sharing via email with expiration controls
-- File versioning and lifecycle management
-- Real-time download notifications
+## ✨ What I'm Building
 
-### User Experience
-- Single Sign-On with AWS Cognito
-- Responsive React interface for all devices
-- Real-time progress feedback and error handling
-- Intuitive file management dashboard
+### Core Features (Learning Focus)
+- **File Upload/Download**: Practicing secure file handling with S3 presigned URLs
+- **User Authentication**: Implementing AWS Cognito for login/signup flows
+- **Access Controls**: Learning to implement proper file permissions
+- **Audit Logging**: Building comprehensive activity tracking
 
-### Compliance & Monitoring
-- Real-time compliance status monitoring
-- Searchable audit log interface
-- Automated security alerts and notifications
-- Performance and health monitoring dashboards
+### Current Status
+- ✅ **Frontend**: React app with authentication forms and file management UI
+- 🚧 **Infrastructure**: Working on Terraform modules for AWS resources
+- ⏳ **Backend**: Lambda functions and API Gateway coming next
+- ⏳ **Security**: Will add encryption, proper IAM policies, and monitoring
 
-## 🚀 Technology Stack
+### Planned Learning Experiments
+- Time-limited file sharing links
+- Basic compliance reporting dashboard
+- Email notifications for file activities
+- Simple user management interface
+
+## 🛠️ Tech Stack (What I'm Learning With)
 
 ### Frontend
-- **React 18** with TypeScript
-- **AWS Amplify** for authentication
-- **Material-UI** or **Tailwind CSS** for styling
-- **React Query** for state management
+- **React 18** with TypeScript (getting comfortable with modern React)
+- **Tailwind CSS** for styling (learning utility-first CSS)
+- **AWS Cognito SDK** for authentication (no Amplify - doing it manually to learn)
 - **Vite** for build tooling
 
-### Backend
-- **Node.js 18** Lambda functions
-- **API Gateway** REST API
-- **DynamoDB** with streams
-- **S3** with presigned URLs
-- **AWS SDK v3** for service integration
+### Backend (Planned)
+- **Node.js 18** Lambda functions (first time with serverless)
+- **API Gateway** REST API (learning API design)
+- **DynamoDB** with streams (NoSQL database practice)
+- **S3** with presigned URLs (secure file handling)
 
 ### Infrastructure
-- **Terraform** for infrastructure as code
+- **Terraform** for infrastructure as code (learning IaC principles)
 - **AWS Provider** with Singapore region
-- **Modular architecture** for reusability
-- **Environment-specific configurations**
+- **Modular approach** (trying to write reusable code)
 
-### DevOps
-- **GitHub Actions** CI/CD pipeline
-- **Automated testing** with Jest and Cypress
-- **Security scanning** with OWASP ZAP
-- **Infrastructure validation** with Terraform
+### Learning Tools
+- **Kiro AI** for requirements and design generation
+- **AWS Console** for manual testing before automation
+- **Jest** for unit testing (when I get to testing)
+- **GitHub** for version control and documentation
 
-## 💰 Cost Optimization
+## 💰 Staying Within Budget (Free Tier Focus)
 
-Designed to maximize AWS Free Tier benefits:
-- **Lambda**: 1M requests/month free
+As a student/fresh grad, I'm designing this to stay within AWS Free Tier limits:
+- **Lambda**: 1M requests/month free (plenty for learning)
 - **API Gateway**: 1M API calls/month free
 - **DynamoDB**: 25GB storage + 25 RCU/WCU free
 - **S3**: 5GB storage + 20,000 GET requests free
 - **CloudFront**: 1TB data transfer free
 - **Cognito**: 50,000 monthly active users free
 - **SES**: 62,000 emails/month free
+
+Perfect for experimenting without breaking the bank! 💸
 
 ## 📋 Prerequisites
 
@@ -99,34 +115,34 @@ Designed to maximize AWS Free Tier benefits:
 - npm or yarn package manager
 - AWS CLI configured
 
-## 🛠️ Quick Start
+## 🚀 Getting Started (Current State)
 
-1. **Clone the repository**
+Right now, only the frontend is functional. Here's how to run what's available:
+
+1. **Clone and explore**
    ```bash
    git clone <repository-url>
    cd singapore-file-sharing
    ```
 
-2. **Set up infrastructure**
+2. **Run the frontend (what works now)**
    ```bash
-   cd terraform
-   terraform init
-   terraform plan
-   terraform apply
-   ```
-
-3. **Deploy backend functions**
-   ```bash
-   cd ../backend
-   npm install
-   npm run deploy
-   ```
-
-4. **Start frontend development**
-   ```bash
-   cd ../frontend
+   cd frontend
    npm install
    npm run dev
+   ```
+   *Note: You'll need to set up AWS Cognito and add environment variables for full functionality*
+
+3. **Infrastructure (work in progress)**
+   ```bash
+   cd terraform
+   # Coming soon - modules are empty shells right now
+   ```
+
+4. **Backend (not implemented yet)**
+   ```bash
+   cd backend
+   # This directory doesn't exist yet - Lambda functions coming next!
    ```
 
 ## 📁 Project Structure
@@ -152,38 +168,46 @@ singapore-file-sharing/
         └── tasks.md         # Implementation tasks
 ```
 
-## 🧪 Testing
+## 🧪 Testing (Learning Goals)
 
-- **Unit Tests**: Jest for Lambda functions and React components
-- **Integration Tests**: API testing with real AWS services
-- **E2E Tests**: Cypress for full user journey testing
-- **Security Tests**: OWASP ZAP for vulnerability scanning
-- **Compliance Tests**: Automated PDPA compliance validation
+My plan for testing as I build:
+- **Unit Tests**: Jest for Lambda functions (when I write them)
+- **Frontend Tests**: Basic React component testing
+- **Manual Testing**: Lots of clicking around in the AWS Console
+- **Security Learning**: Maybe try some basic vulnerability scanning tools
+- **Integration Testing**: Testing the full flow from frontend to backend
 
-## 📊 Monitoring & Observability
+*Reality check: This is a learning project, so testing will be basic but educational!*
 
-- **CloudWatch Dashboards**: Application and infrastructure metrics
-- **Custom Metrics**: Business logic and performance indicators
-- **Log Aggregation**: Centralized logging with CloudWatch Logs
-- **Alerting**: SNS notifications for critical events
-- **Health Checks**: Automated endpoint monitoring
+## 📊 What I Want to Learn About Monitoring
 
-## 🤝 Contributing
+Future learning goals for observability:
+- **CloudWatch Basics**: Understanding logs and basic metrics
+- **Simple Dashboards**: Creating basic monitoring views
+- **Alerting**: Setting up notifications for errors
+- **Cost Monitoring**: Keeping track of AWS spending
+- **Security Monitoring**: Learning what security events to watch for
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+*These are aspirational - I'll start simple and build up my monitoring knowledge.*
+
+## 🤝 Learning Together
+
+This is primarily a personal learning project, but if you're also learning cloud security and want to:
+- Share feedback on my approach
+- Suggest security improvements
+- Point out better practices
+- Share your own learning experiences
+
+Feel free to open an issue or reach out! Always happy to learn from others.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - feel free to use it for your own learning!
 
-## 🙋‍♂️ Support
+## 🙋‍♂️ Questions?
 
-For questions or support, please open an issue in the GitHub repository or contact the development team.
+If you have questions about my approach or want to discuss cloud security learning, feel free to open an issue. I'm documenting my learning journey, so questions help me think through concepts better.
 
 ---
 
-**Built with ❤️ for Singapore's digital transformation**
+**Learning cloud security one Lambda function at a time** 🚀
