@@ -7,201 +7,297 @@
   - Basic file upload and list components implemented
   - _Requirements: 1.1, 1.2, 1.4, 7.1_
 
-- [ ] 2. Set up Terraform infrastructure foundation
-  - [ ] 2.1 Create Cognito User Pool module
-    - Configure user pool with email verification
-    - Set up user pool client with appropriate settings
-    - Create identity pool for temporary AWS credentials
+- [ ] 2. Create AWS Cognito User Pool (Console → Terraform)
+  - [ ] 2.1 Manual setup in AWS Console
+    - Create User Pool with email verification in ap-southeast-1
+    - Configure password policies and MFA settings
+    - Set up User Pool Client with appropriate auth flows
+    - Test authentication with frontend app
+    - Document all configuration settings
     - _Requirements: 1.1, 1.2, 1.3_
 
-  - [ ] 2.2 Create S3 bucket module
-    - Set up S3 bucket with versioning and encryption
-    - Configure bucket policies for Singapore compliance
-    - Set up CORS for frontend access
+  - [ ] 2.2 Automate with Terraform
+    - Create Cognito Terraform module based on console config
+    - Define variables for all configurable settings
+    - Test Terraform deployment matches console setup
+    - Update frontend environment variables
+    - _Requirements: 1.1, 1.2, 1.3, 6.1_
+
+- [ ] 3. Set up S3 bucket for file storage (Console → Terraform)
+  - [ ] 3.1 Manual setup in AWS Console
+    - Create S3 bucket in ap-southeast-1 region
+    - Enable versioning and server-side encryption
+    - Configure CORS policy for frontend access
+    - Set up bucket policies for security
+    - Test file upload/download with presigned URLs
+    - _Requirements: 2.2, 9.2_
+
+  - [ ] 3.2 Automate with Terraform
+    - Create S3 Terraform module replicating console setup
+    - Define bucket policies and CORS configuration
+    - Test Terraform deployment matches manual setup
+    - Verify frontend can still access bucket
     - _Requirements: 2.2, 6.1, 9.2_
 
-  - [ ] 2.3 Create DynamoDB tables module
-    - Create Users, Files, FileShares, and AuditLogs tables
-    - Configure indexes and streams for audit logging
-    - Set up encryption at rest with KMS
+- [ ] 4. Create DynamoDB tables (Console → Terraform)
+  - [ ] 4.1 Manual setup in AWS Console
+    - Create Files table with appropriate indexes
+    - Create FileShares table with TTL configuration
+    - Create AuditLogs table with streams enabled
+    - Enable encryption at rest for all tables
+    - Test basic CRUD operations manually
     - _Requirements: 2.3, 4.1, 4.2_
 
-  - [ ] 2.4 Create KMS encryption module
-    - Set up customer-managed KMS keys
-    - Configure key rotation policies
-    - Create IAM policies for key access
+  - [ ] 4.2 Automate with Terraform
+    - Create DynamoDB Terraform module for all tables
+    - Configure indexes, streams, and encryption settings
+    - Test Terraform deployment creates identical tables
+    - Verify table functionality remains intact
+    - _Requirements: 2.3, 4.1, 4.2, 6.1_
+
+- [ ] 5. Set up KMS encryption keys (Console → Terraform)
+  - [ ] 5.1 Manual setup in AWS Console
+    - Create customer-managed KMS key for S3
+    - Create separate KMS key for DynamoDB
+    - Configure key policies and rotation
+    - Test encryption with S3 and DynamoDB
+    - Document key ARNs and policies
     - _Requirements: 9.2, 9.3, 9.5_
 
-- [ ] 3. Create backend Lambda functions structure
-  - [ ] 3.1 Set up Lambda function project structure
-    - Create Node.js project with TypeScript
-    - Set up shared utilities and data models
-    - Configure build and deployment scripts
-    - _Requirements: 2.3, 4.1, 9.1_
+  - [ ] 5.2 Automate with Terraform
+    - Create KMS Terraform module for both keys
+    - Define key policies and rotation settings
+    - Test Terraform deployment matches console setup
+    - Update S3 and DynamoDB modules to use KMS keys
+    - _Requirements: 9.2, 9.3, 9.5, 6.1_
 
-- [ ] 4. Build file management Lambda functions
-  - [ ] 4.1 Create file upload Lambda function
-    - Generate S3 presigned URLs for secure uploads
-    - Validate file types and size constraints
-    - Store file metadata in DynamoDB
+- [ ] 6. Create file upload Lambda function (Console → Terraform)
+  - [ ] 6.1 Manual setup in AWS Console
+    - Create Lambda function with Node.js runtime
+    - Write code to generate S3 presigned URLs
+    - Test function manually with test events
+    - Configure IAM role with S3 and DynamoDB permissions
+    - Test integration with S3 bucket and DynamoDB
     - _Requirements: 2.1, 2.2, 2.3, 9.2_
 
-  - [ ] 4.2 Implement file listing and details functions
-    - Write file-list Lambda to query user's files
-    - Create file-details Lambda for specific file metadata
-    - Implement pagination and filtering capabilities
+  - [ ] 6.2 Automate with Terraform
+    - Create Lambda Terraform module for file upload
+    - Define IAM roles and policies in Terraform
+    - Set up deployment package and versioning
+    - Test Terraform deployment matches console setup
+    - _Requirements: 2.1, 2.2, 2.3, 6.1, 9.2_
+
+- [ ] 7. Create file listing Lambda function (Console → Terraform)
+  - [ ] 7.1 Manual setup in AWS Console
+    - Create Lambda function to query user's files from DynamoDB
+    - Implement pagination and filtering logic
+    - Test function with various query parameters
+    - Configure appropriate IAM permissions
+    - Test integration with frontend
     - _Requirements: 2.3, 7.4_
 
-  - [ ] 4.3 Build file deletion functionality
-    - Create file-delete Lambda to remove from S3 and DynamoDB
+  - [ ] 7.2 Automate with Terraform
+    - Create Lambda Terraform module for file listing
+    - Define IAM policies for DynamoDB access
+    - Test Terraform deployment functionality
+    - Verify frontend integration still works
+    - _Requirements: 2.3, 6.1, 7.4_
+
+- [ ] 8. Create file deletion Lambda function (Console → Terraform)
+  - [ ] 8.1 Manual setup in AWS Console
+    - Create Lambda function to delete files from S3 and DynamoDB
     - Implement cascade deletion for related shares
-    - Add audit logging for deletion events
+    - Add comprehensive audit logging
+    - Test deletion scenarios manually
+    - Configure IAM permissions for S3 and DynamoDB
     - _Requirements: 2.4, 4.1, 4.3_
 
-- [ ] 5. Implement file sharing system
-  - [ ] 5.1 Create file sharing Lambda function
+  - [ ] 8.2 Automate with Terraform
+    - Create Lambda Terraform module for file deletion
+    - Define IAM policies for multi-service access
+    - Test Terraform deployment matches manual setup
+    - Verify audit logging functionality
+    - _Requirements: 2.4, 4.1, 4.3, 6.1_
+
+- [ ] 9. Create file sharing Lambda function (Console → Terraform)
+  - [ ] 9.1 Manual setup in AWS Console
+    - Create Lambda function for file sharing
     - Generate secure, time-limited sharing tokens
     - Store sharing metadata in DynamoDB with TTL
-    - Implement access control validation
+    - Test sharing functionality manually
+    - Configure IAM permissions for DynamoDB access
     - _Requirements: 3.1, 3.3, 3.5_
 
-  - [ ] 5.2 Build file download access handler
+  - [ ] 9.2 Automate with Terraform
+    - Create Lambda Terraform module for file sharing
+    - Define IAM policies and DynamoDB permissions
+    - Test Terraform deployment matches console setup
+    - Verify sharing functionality works
+    - _Requirements: 3.1, 3.3, 3.5, 6.1_
+
+- [ ] 10. Create file download handler (Console → Terraform)
+  - [ ] 10.1 Manual setup in AWS Console
+    - Create Lambda function for download access
     - Validate sharing tokens and permissions
     - Generate S3 presigned URLs for downloads
-    - Track download counts and enforce limits
+    - Test download scenarios manually
+    - Configure IAM permissions for S3 access
     - _Requirements: 3.2, 3.4, 4.1_
 
-- [ ] 6. Create notification system
-  - [ ] 6.1 Implement email notification Lambda
-    - Set up SES for sending file sharing emails
-    - Create email templates with security warnings
-    - Handle email delivery failures and retries
+  - [ ] 10.2 Automate with Terraform
+    - Create Lambda Terraform module for downloads
+    - Define IAM policies for S3 and DynamoDB access
+    - Test Terraform deployment functionality
+    - Verify download links work correctly
+    - _Requirements: 3.2, 3.4, 4.1, 6.1_
+
+- [ ] 11. Set up SES for email notifications (Console → Terraform)
+  - [ ] 11.1 Manual setup in AWS Console
+    - Configure SES in ap-southeast-1 region
+    - Verify email addresses for testing
+    - Create email templates for file sharing
+    - Test email sending manually
+    - Configure SES permissions and policies
     - _Requirements: 8.1, 8.3, 8.5_
 
-  - [ ] 6.2 Build SNS notification handler
+  - [ ] 11.2 Automate with Terraform
+    - Create SES Terraform module
+    - Define email templates and configurations
+    - Test Terraform deployment matches console setup
+    - Verify email functionality works
+    - _Requirements: 8.1, 8.3, 8.5, 6.1_
+
+- [ ] 12. Create SNS notification system (Console → Terraform)
+  - [ ] 12.1 Manual setup in AWS Console
     - Create SNS topics for download notifications
-    - Implement Lambda to publish download events
-    - Set up notification preferences management
+    - Set up subscriptions for testing
+    - Test notification publishing manually
+    - Configure topic policies and permissions
     - _Requirements: 8.2, 8.4, 8.5_
 
-- [ ] 7. Develop audit logging system
-  - [ ] 7.1 Create audit logging Lambda function
-    - Implement comprehensive event logging
+  - [ ] 12.2 Automate with Terraform
+    - Create SNS Terraform module
+    - Define topics and subscription configurations
+    - Test Terraform deployment matches console setup
+    - Verify notifications work correctly
+    - _Requirements: 8.2, 8.4, 8.5, 6.1_
+
+- [ ] 13. Create audit logging system (Console → Terraform)
+  - [ ] 13.1 Manual setup in AWS Console
+    - Create Lambda function for comprehensive event logging
     - Store audit logs in DynamoDB with proper indexing
-    - Create CloudWatch log integration
-    - _Requirements: 4.1, 4.2, 4.5_
+    - Test audit logging with various events
+    - Configure CloudWatch log integration
+    - Test searchable audit log queries manually
+    - _Requirements: 4.1, 4.2, 4.3, 4.5_
 
-  - [ ] 7.2 Build audit query and reporting functions
-    - Implement searchable audit log queries
-    - Create filtering and pagination for audit logs
-    - Add suspicious activity detection logic
-    - _Requirements: 4.3, 4.4_
+  - [ ] 13.2 Automate with Terraform
+    - Create audit logging Lambda Terraform module
+    - Define DynamoDB and CloudWatch permissions
+    - Test Terraform deployment matches console setup
+    - Verify audit functionality works correctly
+    - _Requirements: 4.1, 4.2, 4.3, 4.5, 6.1_
 
-- [ ] 8. Set up API Gateway and routing
-  - [ ] 8.1 Configure API Gateway with Terraform
+- [ ] 14. Set up API Gateway (Console → Terraform)
+  - [ ] 14.1 Manual setup in AWS Console
     - Create REST API with proper CORS settings
     - Set up Cognito authorizer for protected endpoints
-    - Configure request/response transformations
-    - _Requirements: 1.5, 7.1, 9.1_
-
-  - [ ] 8.2 Implement API Gateway integrations
     - Connect all Lambda functions to API endpoints
-    - Set up request validation and throttling
-    - Configure error handling and response mapping
-    - _Requirements: 7.3, 9.1_
+    - Test API endpoints manually with Postman/curl
+    - Configure request validation and throttling
+    - _Requirements: 1.5, 7.1, 7.3, 9.1_
 
-- [ ] 9. Build React frontend application
-  - [ ] 9.1 Set up React project with authentication
-    - Initialize React app with TypeScript and routing
-    - Integrate AWS Amplify for Cognito authentication
-    - Create AuthGuard component for route protection
-    - _Requirements: 1.1, 1.2, 1.4, 7.1_
+  - [ ] 14.2 Automate with Terraform
+    - Create API Gateway Terraform module
+    - Define all endpoints and integrations
+    - Test Terraform deployment matches console setup
+    - Verify frontend can connect to API
+    - _Requirements: 1.5, 6.1, 7.1, 7.3, 9.1_
 
-  - [ ] 9.2 Implement file upload interface
-    - Create drag-and-drop file upload component
-    - Add progress tracking and error handling
-    - Implement file type and size validation
-    - _Requirements: 2.1, 2.4, 7.2, 7.3_
+- [ ] 15. Set up CloudFront and security headers (Console → Terraform)
+  - [ ] 15.1 Manual setup in AWS Console
+    - Create CloudFront distribution for React app
+    - Configure security headers (CSP, HSTS, etc.)
+    - Set up SSL/TLS certificates with ACM
+    - Test frontend deployment and security headers
+    - _Requirements: 9.1, 9.4_
 
-  - [ ] 9.3 Build file management interface
-    - Create file list component with metadata display
-    - Implement file deletion with confirmation
-    - Add file sharing interface with email input
-    - _Requirements: 3.1, 7.4, 7.5_
+  - [ ] 15.2 Automate with Terraform
+    - Create CloudFront Terraform module
+    - Define security headers and SSL configuration
+    - Test Terraform deployment matches console setup
+    - Verify frontend works with CloudFront
+    - _Requirements: 6.1, 9.1, 9.4_
 
-  - [ ] 9.4 Create audit and compliance dashboard
+- [ ] 16. Set up AWS Config for compliance (Console → Terraform)
+  - [ ] 16.1 Manual setup in AWS Console
+    - Create custom Config rules for Singapore compliance
+    - Set up compliance monitoring and reporting
+    - Test automated remediation where possible
+    - Configure compliance alerting
+    - _Requirements: 5.1, 5.2, 5.3, 5.5_
+
+  - [ ] 16.2 Automate with Terraform
+    - Create AWS Config Terraform module
+    - Define compliance rules and remediation
+    - Test Terraform deployment matches console setup
+    - Verify compliance monitoring works
+    - _Requirements: 5.1, 5.2, 5.3, 5.5, 6.1_
+
+- [ ] 17. Set up CloudWatch monitoring (Console → Terraform)
+  - [ ] 17.1 Manual setup in AWS Console
+    - Create custom metrics for application performance
+    - Set up log aggregation and analysis
+    - Configure CloudWatch alarms for critical metrics
+    - Test monitoring and alerting manually
+    - _Requirements: 4.4, 5.3_
+
+  - [ ] 17.2 Automate with Terraform
+    - Create CloudWatch Terraform module
+    - Define metrics, alarms, and log groups
+    - Test Terraform deployment matches console setup
+    - Verify monitoring functionality works
+    - _Requirements: 4.4, 5.3, 6.1_
+
+- [ ] 18. Enhance frontend with backend integration
+  - [ ] 18.1 Connect frontend to API Gateway
+    - Update frontend to use real API endpoints
+    - Replace mock data with actual API calls
+    - Add error handling for API failures
+    - Test full frontend-backend integration
+    - _Requirements: 7.2, 7.3, 7.4, 7.5_
+
+  - [ ] 18.2 Add audit and compliance dashboard
     - Build audit log viewer with search and filtering
     - Implement compliance status monitoring interface
     - Add notification preferences management
+    - Test dashboard functionality
     - _Requirements: 4.3, 5.4, 8.4_
 
-- [ ] 10. Implement security and encryption
-  - [ ] 10.1 Set up AWS KMS encryption
-    - Create customer-managed KMS keys with Terraform
-    - Configure S3 bucket encryption with KMS
-    - Implement DynamoDB encryption at rest
-    - _Requirements: 9.2, 9.3, 9.5_
-
-  - [ ] 10.2 Add security headers and HTTPS
-    - Configure CloudFront with security headers
-    - Set up SSL/TLS certificates with ACM
-    - Implement CSP and other security policies
-    - _Requirements: 9.1, 9.4_
-
-- [ ] 11. Create compliance monitoring system
-  - [ ] 11.1 Set up AWS Config rules
-    - Create custom Config rules for Singapore compliance
-    - Implement automated remediation where possible
-    - Set up compliance reporting and alerting
-    - _Requirements: 5.1, 5.2, 5.3, 5.5_
-
-  - [ ] 11.2 Implement PDPA compliance features
-    - Add data export functionality for users
-    - Create secure data deletion with audit trail
-    - Implement consent management interface
-    - _Requirements: 5.4, 5.5_
-
-- [ ] 12. Add monitoring and alerting
-  - [ ] 12.1 Set up CloudWatch monitoring
-    - Create custom metrics for application performance
-    - Set up log aggregation and analysis
-    - Implement health check endpoints
-    - _Requirements: 4.4, 5.3_
-
-  - [ ] 12.2 Configure alerting and notifications
-    - Set up CloudWatch alarms for critical metrics
-    - Create SNS topics for operational alerts
-    - Implement security incident notifications
-    - _Requirements: 4.4, 5.3_
-
-- [ ] 13. Write comprehensive tests
-  - [ ] 13.1 Create unit tests for Lambda functions
+- [ ] 19. Write comprehensive tests
+  - [ ] 19.1 Create unit tests for Lambda functions
     - Write Jest tests for all Lambda functions
     - Mock AWS SDK calls and DynamoDB operations
     - Test error handling and edge cases
     - _Requirements: All requirements validation_
 
-  - [ ] 13.2 Implement integration tests
-    - Create end-to-end API tests with real AWS services
-    - Test authentication flows and file operations
-    - Validate audit logging and compliance features
-    - _Requirements: All requirements validation_
-
-  - [ ] 13.3 Add frontend component tests
-    - Write React Testing Library tests for all components
+  - [ ] 19.2 Add frontend component tests
+    - Write React Testing Library tests for components
     - Test user interactions and error scenarios
-    - Implement accessibility testing
+    - Implement basic accessibility testing
     - _Requirements: 7.1, 7.3, 7.5_
 
-- [ ] 14. Deploy and configure production environment
-  - [ ] 14.1 Set up CI/CD pipeline
-    - Create GitHub Actions or similar for automated deployment
-    - Implement Terraform plan and apply stages
-    - Add automated testing in pipeline
-    - _Requirements: 6.2, 6.5_
+- [ ] 20. Final integration and deployment
+  - [ ] 20.1 End-to-end testing
+    - Test complete user workflows manually
+    - Verify all security features work correctly
+    - Test compliance and audit functionality
+    - Document any issues and fixes
+    - _Requirements: All requirements validation_
 
-  - [ ] 14.2 Configure production settings
-    - Set up CloudFront distribution for React app
-    - Configure custom domain with Route 53
-    - Enable all monitoring and alerting in production
-    - _Requirements: 6.3, 6.4_
+  - [ ] 20.2 Production deployment preparation
+    - Review all Terraform modules for production readiness
+    - Set up environment-specific configurations
+    - Create deployment documentation
+    - Plan rollback procedures
+    - _Requirements: 6.2, 6.3, 6.4, 6.5_
