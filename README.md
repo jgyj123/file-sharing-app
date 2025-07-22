@@ -2,6 +2,8 @@
 
 A personal project to explore and practice cloud security concepts through building a serverless file sharing application. This project serves as a hands-on learning experience for implementing security best practices, AWS services, and compliance considerations in a real-world scenario.
 
+**Note:** This isn't production-ready software. It's a learning sandbox where I can experiment with security concepts and AWS services while building something functional.
+
 ## Project Motivation
 
 As a fresh graduate looking to deepen my understanding of cloud security, I wanted to build something that would challenge me to implement:
@@ -10,9 +12,7 @@ As a fresh graduate looking to deepen my understanding of cloud security, I want
 - **Secure file handling** with proper access controls
 - **Audit logging** for security monitoring
 - **Infrastructure as Code** for reproducible deployments
-- **Basic compliance considerations**
-- 
-This isn't production-ready software - it's a learning sandbox where I can experiment with security concepts and AWS services while building something functional.
+- **Basic compliance considerations** under Singapore's context
 
 ## Architecture
 
@@ -23,15 +23,15 @@ This isn't production-ready software - it's a learning sandbox where I can exper
 - **Storage**: S3 with KMS encryption and lifecycle policies
 - **Authentication**: AWS Cognito User Pools and Identity Pools
 - **Notifications**: SES for email sharing, SNS for download alerts
-- **Compliance**: AWS Config rules with automated remediation
+- **Compliance**: AWS Config rules for automated compliance scoring
 - **Infrastructure**: 100% Terraform-managed infrastructure as code
 
 ## Learning Goals & Development Methodology
 
 ### My Development Approach
 1. **Spec-Driven Development**: Using Kiro AI to generate detailed requirements and design documents
-2. **Console-First Implementation**: Building and testing features manually in AWS Console before automating
-3. **Infrastructure as Code**: Writing Terraform to codify and automate the manual configurations
+2. **Console-First Implementation**: Building and testing features manually in AWS Console before automating to learn
+3. **Infrastructure as Code**: Writing Terraform to codify and automate the manual configurations after getting comfortable in the console
 4. **Iterative Security Hardening**: Starting with basic functionality, then layering in security controls
 
 ### Security Concepts I'm Exploring
@@ -47,8 +47,6 @@ This isn't production-ready software - it's a learning sandbox where I can exper
 - **Audit Trails**: Learning what needs to be logged for compliance
 - **User Rights**: Implementing basic data access and deletion capabilities
 
-*Note: This is a learning project - the compliance implementation is educational and not production-ready.*
-
 ## What I'm Building
 
 ### Core Features (Learning Focus)
@@ -56,12 +54,6 @@ This isn't production-ready software - it's a learning sandbox where I can exper
 - **User Authentication**: Implementing AWS Cognito for login/signup flows
 - **Access Controls**: Learning to implement proper file permissions
 - **Audit Logging**: Building comprehensive activity tracking
-
-### Planned Learning Experiments
-- Time-limited file sharing links
-- Basic compliance reporting dashboard
-- Email notifications for file activities
-- Simple user management interface
 
 ## Tech Stack (What I'm Learning With)
 
@@ -89,7 +81,7 @@ This isn't production-ready software - it's a learning sandbox where I can exper
 - **GitHub** for version control and documentation
 
 
-## 📊 What I Want to Learn About Monitoring
+## What I Want to Learn About Monitoring
 
 Future learning goals for observability:
 - **CloudWatch Basics**: Understanding logs and basic metrics
