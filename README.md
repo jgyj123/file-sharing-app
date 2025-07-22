@@ -29,9 +29,9 @@ As a fresh graduate looking to deepen my understanding of cloud security, I want
 ## Learning Goals & Development Methodology
 
 ### My Development Approach
-1. **Spec-Driven Development**: Using Kiro AI to generate detailed requirements and design documents
-2. **Console-First Implementation**: Building and testing features manually in AWS Console before automating to learn
-3. **Infrastructure as Code**: Writing Terraform to codify and automate the manual configurations after getting comfortable in the console
+1. **Spec-Driven Development**: Using Kiro AI to generate detailed requirements and act as my project manager
+2. **Console-First Implementation**: Building and testing features manually to make sure I understand what I am building
+3. **Infrastructure as Code**: Writing Terraform to codify and automate the manual configurations after that
 4. **Iterative Security Hardening**: Starting with basic functionality, then layering in security controls
 
 ### Security Concepts I'm Exploring
@@ -73,13 +73,6 @@ As a fresh graduate looking to deepen my understanding of cloud security, I want
 - **Terraform** for infrastructure as code (learning IaC principles)
 - **AWS Provider** with Singapore region
 - **Modular approach** (trying to write reusable code)
-
-### Learning Tools
-- **Kiro AI** for requirements and design generation
-- **AWS Console** for manual testing before automation
-- **Jest** for unit testing (when I get to testing)
-- **GitHub** for version control and documentation
-
 
 ## What I Want to Learn About Monitoring
 
