@@ -1,11 +1,13 @@
-# TraceShare - Secure File Sharing with Complete Audit Trails
+# TraceShare - Secure and Traceable File Sharing 
 
-> **An internal file sharing tool for companies built on AWS. Share files quickly and securely through custom links with full traceability and visibility for every action. Built cloud native for modern teams.**
+**A personal security learning project where I'm building a serverless, cloud-native internal file sharing tool for companies. The focus is on quick, secure file sharing through custom links that expire with complete audit trails and visibility for every action.**
+
+Note: This project is still in progress.
 
 ## What TraceShare Offers
 
-**⚡ Lightning Fast** - Log in, upload a file, and generate a link within seconds  
-**🔒 Secure File Sharing** - Direct-to-S3 uploads using presigned URLs with restricted access  
+**⚡ Lightning Fast** - Log in, upload a file, and generate a custom link within seconds  
+**🔒 Secure File Sharing** - Secure uploads/downloads using presigned URLs with restricted access  
 **📊 Complete Audit Trails** - Every upload, download, and share is tracked with timestamp and location  
 **🛡️ Security & Privacy** - Authentication with MFA, encryption at rest and in transit, all data in Singapore (ap-southeast-1)  
 **☁️ Serverless Architecture** - Built on AWS Lambda, API Gateway and other AWS services for automatic scaling and cost efficiency  
@@ -45,14 +47,14 @@ As a fresh graduate looking to deepen my understanding of cloud security, I want
 ## Architecture
 
 **Serverless & Cloud-Native Design:**
-- **Frontend**: React SPA with TypeScript, hosted on CloudFront CDN
+- **Frontend**: React SPA with TypeScript
 - **Backend**: Node.js Lambda functions with API Gateway
-- **Database**: DynamoDB with streams for real-time audit logging
+- **Database**: DynamoDB foraudit logging
 - **Storage**: S3 with KMS encryption and lifecycle policies
-- **Authentication**: AWS Cognito User Pools and Identity Pools
-- **Notifications**: SES for email sharing, SNS for download alerts
-- **Compliance**: AWS Config rules for automated compliance scoring
-- **Infrastructure**: 100% Terraform-managed infrastructure as code
+- **Authentication**: AWS Cognito with MFA
+- **Notifications (Planned)** : SES for email sharing, SNS for download alerts
+- **Compliance (Planned)**: AWS Config rules for automated compliance scoring
+- **Infrastructure (Planned)**: 100% Terraform-managed infrastructure as code
 
 ## Learning Goals & Development Methodology
 
@@ -92,7 +94,7 @@ As a fresh graduate looking to deepen my understanding of cloud security, I want
 - **Vite** for build tooling
 
 ### Backend (Planned)
-- **Node.js 18** Lambda functions (first time with serverless)
+- **Node.js 22** Lambda functions 
 - **API Gateway** REST API (learning API design)
 - **DynamoDB** with streams (NoSQL database practice)
 - **S3** with presigned URLs (secure file handling)
