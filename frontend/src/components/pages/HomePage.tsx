@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { FileUpload, FileList, type FileItem } from '@/components/file';
 import { useAuth } from '@/hooks/useAuth';
+import { ActivityTable } from '@/components/ActivityTable';
 
 export const HomePage: React.FC = () => {
   const { user, loading, signOut } = useAuth();
@@ -133,6 +134,11 @@ export const HomePage: React.FC = () => {
               currentUser={user.email}
             />
           </div>
+        </div>
+
+        {/* Activity Table Section */}
+        <div className="mt-8">
+          <ActivityTable userId="user123" />
         </div>
       </main>
     </div>

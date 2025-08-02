@@ -6,7 +6,8 @@ export interface UserActivity {
   fileId?: string;
   fileName?: string;
   details: ActivityDetails;
-  ipAddress?: string;
+  ipAddress?: string; // Keep for backend storage
+  location?: string;  // Add for frontend display
   userAgent?: string;
 }
 
