@@ -68,6 +68,17 @@ export const HomePage: React.FC = () => {
     setFiles(prev => prev.filter(f => f.id !== file.id));
   };
 
+  const handleGenerateLink = async (file: FileItem, expiryHours: number) => {
+    // TODO: Implement actual presigned URL generation
+    console.log(`Generating presigned URL for ${file.name} with ${expiryHours} hour expiry`);
+    
+    // Mock API call - in reality, this would call your Lambda function
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Return mock presigned URL
+    return `https://example-bucket.s3.amazonaws.com/${file.name}?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=${expiryHours * 3600}`;
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -131,6 +142,7 @@ export const HomePage: React.FC = () => {
               files={files}
               onDownload={handleFileDownload}
               onDelete={handleFileDelete}
+              onGenerateLink={handleGenerateLink}
               currentUser={user.email}
             />
           </div>
