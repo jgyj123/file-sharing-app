@@ -6,7 +6,7 @@ Note: This project is still in progress.
 
 ## What TraceShare Offers
 
-**⚡ Lightning Fast** - Log in, upload a file, and generate a custom link within seconds  
+**⚡ Lightning Fast** - Log in, upload a file, and generate a custom link to share within seconds  
 **🔒 Secure File Sharing** - Secure uploads/downloads using presigned URLs with restricted access  
 **📊 Complete Audit Trails** - Every upload, download, and share is tracked with timestamp and location  
 **🛡️ Security & Privacy** - Authentication with MFA, encryption at rest and in transit, all data in Singapore (ap-southeast-1)  
