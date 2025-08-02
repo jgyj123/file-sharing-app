@@ -1,0 +1,11 @@
+{
+  "httpMethod": "POST",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"fileName\":\"test-document.pdf\",\"contentType\":\"application/pdf\",\"fileSize\":2048000}",
+  "requestContext": {
+    "httpMethod": "POST",
+    "requestId": "test-valid-upload"
+  }
+}

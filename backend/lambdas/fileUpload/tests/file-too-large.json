@@ -1,0 +1,11 @@
+{
+  "httpMethod": "POST",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"fileName\":\"huge-file.zip\",\"contentType\":\"application/zip\",\"fileSize\":150000000}",
+  "requestContext": {
+    "httpMethod": "POST",
+    "requestId": "test-file-too-large"
+  }
+}

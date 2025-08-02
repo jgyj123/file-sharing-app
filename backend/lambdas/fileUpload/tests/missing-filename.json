@@ -1,0 +1,11 @@
+{
+  "httpMethod": "POST",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"contentType\":\"application/pdf\",\"fileSize\":1024}",
+  "requestContext": {
+    "httpMethod": "POST",
+    "requestId": "test-missing-filename"
+  }
+}
