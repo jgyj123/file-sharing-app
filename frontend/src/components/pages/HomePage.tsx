@@ -9,11 +9,12 @@ import { ActivityTable } from '@/components/ActivityTable';
 export const HomePage: React.FC = () => {
   const { user, loading, signOut } = useAuth();
   const [files, setFiles] = useState<FileItem[]>([]);
-
+  // user.email = "user@example.com"
   // Mock data for demonstration
   useEffect(() => {
     if (user) {
       // This would typically come from an API call
+      user.email = "user@example.com"
       const mockFiles: FileItem[] = [
         {
           id: '1',
@@ -101,7 +102,7 @@ export const HomePage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center space-x-4">
-              <h1 className="text-2xl font-bold text-gray-900">File Sharing</h1>
+              <h1 className="text-2xl font-bold text-gray-900">TraceShare</h1>
             </div>
             
             <div className="flex items-center space-x-4">

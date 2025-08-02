@@ -153,26 +153,25 @@ export const ActivityTable: React.FC<ActivityTableProps> = ({ userId = 'user123'
           <table className="w-full table-auto">
             <thead>
               <tr className="border-b border-gray-200">
-                <th className="text-left py-3 px-2 font-medium text-gray-700">Activity</th>
                 <th className="text-left py-3 px-2 font-medium text-gray-700">File</th>
+                <th className="text-left py-3 px-2 font-medium text-gray-700">Activity</th>
                 <th className="text-left py-3 px-2 font-medium text-gray-700">Timestamp</th>
                 <th className="text-left py-3 px-2 font-medium text-gray-700">Details</th>
                 <th className="text-left py-3 px-2 font-medium text-gray-700">Location</th>
-                <th className="text-left py-3 px-2 font-medium text-gray-700">File ID</th>
               </tr>
             </thead>
             <tbody>
               {currentActivities.map((activity) => (
                 <tr key={activity.id} className="border-b border-gray-100 hover:bg-gray-50">
                   <td className="py-3 px-2">
-                    <div className="flex items-center space-x-2">
-                      {getActivityIcon(activity.activityType)}
-                      <span className="text-sm font-medium">{formatActivityType(activity.activityType)}</span>
+                    <div className="text-sm">
+                      <div className="font-medium text-gray-900">{activity.fileName || '-'}</div>
                     </div>
                   </td>
                   <td className="py-3 px-2">
-                    <div className="text-sm">
-                      <div className="font-medium text-gray-900">{activity.fileName || '-'}</div>
+                    <div className="flex items-center space-x-2">
+                      {getActivityIcon(activity.activityType)}
+                      <span className="text-sm font-medium">{formatActivityType(activity.activityType)}</span>
                     </div>
                   </td>
                   <td className="py-3 px-2">
@@ -188,11 +187,6 @@ export const ActivityTable: React.FC<ActivityTableProps> = ({ userId = 'user123'
                   <td className="py-3 px-2">
                     <div className="text-sm text-gray-600">
                       {activity.location || 'Singapore, SG'}
-                    </div>
-                  </td>
-                  <td className="py-3 px-2">
-                    <div className="text-sm text-gray-600 font-mono">
-                      {activity.fileId || '-'}
                     </div>
                   </td>
                 </tr>
