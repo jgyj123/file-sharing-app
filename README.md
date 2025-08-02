@@ -1,4 +1,4 @@
-# TraceShare - Secure and Traceable File Sharing 
+# TraceShare - Secure File Sharing Application
 
 **A personal security learning project where I'm building a serverless, cloud-native internal file sharing tool for companies using AWS. The focus is on quick, secure file sharing through custom links that expire with complete audit trails and visibility for every action.**
 
