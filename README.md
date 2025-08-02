@@ -28,14 +28,7 @@ Note: This project is still in progress.
 
 ---
 
-## About This Project
-
-This is a **security-focused learning project** where I explore cloud security concepts through building a production-quality file sharing application. While functional and feature-complete, it serves as my hands-on laboratory for implementing AWS security best practices, compliance considerations, and serverless architecture patterns.
-
-**Note:** This is a personal learning project, not production software. It's my sandbox for experimenting with security concepts while building something genuinely useful.
-
 ## Project Motivation
-
 As a fresh graduate looking to deepen my understanding of cloud security, I wanted to build something that would challenge me to implement:
 - **Authentication & Authorization** patterns in the cloud
 - **Data encryption** both in transit and at rest
@@ -93,7 +86,7 @@ As a fresh graduate looking to deepen my understanding of cloud security, I want
 - **AWS Cognito SDK** for authentication (no Amplify - doing it manually to learn)
 - **Vite** for build tooling
 
-### Backend (Planned)
+### Backend (In Progress)
 - **Node.js 22** Lambda functions 
 - **API Gateway** REST API (learning API design)
 - **DynamoDB** with streams (NoSQL database practice)
