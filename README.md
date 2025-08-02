@@ -1,8 +1,36 @@
-# Secure File Sharing - A Security Learning Project
+# TraceShare - Secure File Sharing with Complete Audit Trails
 
-A personal project to explore and practice cloud security concepts through building a serverless file sharing application. This project serves as a hands-on learning experience for implementing security best practices, AWS services, and compliance considerations in a real-world scenario.
+> **An internal file sharing tool for companies built on AWS. Share files quickly and securely through custom links with full traceability and visibility for every action. Built cloud native for modern teams.**
 
-**Note:** This isn't production-ready software. It's a learning sandbox where I can experiment with security concepts and AWS services while building something functional.
+## What TraceShare Offers
+
+**⚡ Lightning Fast** - Log in, upload a file, and generate a link within seconds  
+**🔒 Secure File Sharing** - Direct-to-S3 uploads using presigned URLs with restricted access  
+**📊 Complete Audit Trails** - Every upload, download, and share is tracked with timestamp and location  
+**🛡️ Security & Privacy** - Authentication with MFA, encryption at rest and in transit, all data in Singapore (ap-southeast-1)  
+**☁️ Serverless Architecture** - Built on AWS Lambda, API Gateway and other AWS services for automatic scaling and cost efficiency  
+
+## Screenshots
+
+### Main Dashboard
+![TraceShare Homepage](docs/screenshots/homepage-dashboard.png)
+*Clean, intuitive interface showing file uploads, list management, and real-time activity tracking*
+
+### File Management & Link Generation
+![File Management](docs/screenshots/file-management.png)
+*Easy file management with secure link generation and customizable expiry times*
+
+### Activity Monitoring
+![Activity Tracking](docs/screenshots/activity-table.png)
+*Comprehensive audit trails showing all file activities with location and timestamp data*
+
+---
+
+## About This Project
+
+This is a **security-focused learning project** where I explore cloud security concepts through building a production-quality file sharing application. While functional and feature-complete, it serves as my hands-on laboratory for implementing AWS security best practices, compliance considerations, and serverless architecture patterns.
+
+**Note:** This is a personal learning project, not production software. It's my sandbox for experimenting with security concepts while building something genuinely useful.
 
 ## Project Motivation
 
